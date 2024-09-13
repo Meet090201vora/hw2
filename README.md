@@ -12,10 +12,6 @@
 
 <div align="center">
 
-<a href="https://codecov.io/gh/Meet090201vora/hw2" > 
- <img src="https://codecov.io/gh/Meet090201vora/hw2/graph/badge.svg?token=OTARIHY47U)"/> 
- </a> <!-- Code Coverage -->
- 
 [![codecov](https://codecov.io/gh/Meet090201vora/hw2/graph/badge.svg?token=OTARIHY47U)]()
 [![License](https://img.shields.io/badge/License-MIT-purple.svg?style=flat)](https://github.com/Rmv-se-510/hw2/main/LICENSE)
 [![Collaborators](https://img.shields.io/badge/Collaborators-3-orange.svg?style=flat)](https://github.com/Rmv-se-510/hw2/graphs/contributors)
