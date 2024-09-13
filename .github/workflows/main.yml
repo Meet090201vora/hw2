@@ -52,13 +52,13 @@ jobs:
 
     - name: Test the cases
       run: | 
-        pytest --cov=. --cov-report=term --cov-report=json:coverage.json # to test all cases with code coverage and report to terminal as well as to coverage.json file
+        pytest --cov --junitxml=junit.xml -o junit_family=legacy
             
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
+    - name: Upload test results to Codecov
+      if: ${{ !cancelled() }}
+      uses: codecov/test-results-action@v1
       with:
-           token: ${{ secrets.CODECOV_TOKEN }}
-           files: ./coverage.json
+        token: ${{ secrets.CODECOV_TOKEN }}
 
 
     # - name: Generate coverage badge
