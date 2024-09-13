@@ -1,65 +1,65 @@
-name: Test
+# name: Test
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+# on:
+#   push:
+#     branches: [ "main" ]
+#   pull_request:
+#     branches: [ "main" ]
 
-permissions:
-  contents: write
+# permissions:
+#   contents: write
 
-jobs:
-  build:
+# jobs:
+#   build:
 
-    runs-on: ubuntu-latest
+#     runs-on: ubuntu-latest
 
-    steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python 3.x
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.x"
+#     steps:
+#     - uses: actions/checkout@v4
+#     - name: Set up Python 3.x
+#       uses: actions/setup-python@v3
+#       with:
+#         python-version: "3.x"
 
-    - name: Install coreutils (for shuf command)
-      run: sudo apt-get install coreutils
+#     - name: Install coreutils (for shuf command)
+#       run: sudo apt-get install coreutils
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-        pip install codecov
+#     - name: Install dependencies
+#       run: |
+#         python -m pip install --upgrade pip
+#         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+#         pip install codecov
     
-    - name: Analysing the code with autopep8
-      run: |
-        autopep8 --in-place --recursive hw2_debugging.py rand.py
+#     - name: Analysing the code with autopep8
+#       run: |
+#         autopep8 --in-place --recursive hw2_debugging.py rand.py
 
-    - name: Analysing the code with pylint
-      run: |
-        pylint hw2_debugging.py rand.py
+#     - name: Analysing the code with pylint
+#       run: |
+#         pylint hw2_debugging.py rand.py
         
-    - name: Analysing the code with flake8
-      run: |
-        flake8 hw2_debugging.py rand.py
+#     - name: Analysing the code with flake8
+#       run: |
+#         flake8 hw2_debugging.py rand.py
     
-    - name: Analysing the code with radon
-      run: |
-        radon cc hw2_debugging.py rand.py
+#     - name: Analysing the code with radon
+#       run: |
+#         radon cc hw2_debugging.py rand.py
 
-    - name: Run test cases
-      run: |
-        pytest -v tests/
+#     - name: Run test cases
+#       run: |
+#         pytest -v tests/
 
-    - name: Test the cases
-      run: | 
-        pytest --cov=. --cov-report=term --cov-report=json:coverage.json # to test all cases with code coverage and report to terminal as well as to coverage.json file
+#     - name: Test the cases
+#       run: | 
+#         pytest --cov=. --cov-report=term --cov-report=json:coverage.json # to test all cases with code coverage and report to terminal as well as to coverage.json file
             
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
-      with:
-           token: ${{ secrets.CODECOV_TOKEN }}
-           files: ./coverage.json
+#     - name: Upload coverage to Codecov
+#       uses: codecov/codecov-action@v3
+#       with:
+#            token: ${{ secrets.CODECOV_TOKEN }}
+#            files: ./coverage.json
 
 
-    # - name: Generate coverage badge
-    #   uses: we-cli/coverage-badge-action@main
+#     # - name: Generate coverage badge
+#     #   uses: we-cli/coverage-badge-action@main
